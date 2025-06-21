@@ -1013,6 +1013,259 @@
         </div>
     </section>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 50px 0;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-item div {
+            color: white;
+            line-height: 1.4;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #ffd700 !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffed4e !important;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            margin-bottom: 2rem;
+            color: #333;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn i {
+            margin-right: 0.5rem;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
     <!-- Contact Section -->
     <section class="section" id="contact">
         <h2 class="section-title fade-in">Get In Touch</h2>
@@ -1049,35 +1302,44 @@
                     <i class="fas fa-link"></i>
                     <div>
                         <strong>All Links</strong><br>
-                        <a href="https://linktr.ee/Krushna_Padole" target="_blank" style="color: #fff; text-decoration: underline;">linktr.ee/Krushna_Padole</a>
+                        <a href="https://linktr.ee/Krushna_Padole" target="_blank">linktr.ee/Krushna_Padole</a>
                     </div>
                 </div>
             </div>
             
             <div class="contact-form">
-                <h3 style="margin-bottom: 2rem; color: #333;">Send me a message</h3>
+                <h3>Send me a message</h3>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-triangle"></i> Please fill in all required fields.
+                </div>
+                
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="subject">Subject</label>
+                        <label for="subject">Subject *</label>
                         <input type="text" id="subject" name="subject" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or inquiry..."></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <button type="submit" class="btn" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
                 </form>
@@ -1085,23 +1347,90 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://linktr.ee/Krushna_Padole" target="_blank" title="All Links">
-                <i class="fas fa-link"></i>
-            </a>
-            <a href="mailto:krushnapadole18@gmail.com" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="tel:+919960161764" title="Phone">
-                <i class="fas fa-phone"></i>
-            </a>
-        </div>
-        <p>&copy; 2025 Krushna Padole. All rights reserved.</p>
-        <p>AI/ML Engineer | Transforming Data into Intelligent Solutions</p>
-    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
 
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Hide previous messages
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                
+                // Get form data
+                const formData = new FormData(form);
+                const name = formData.get('name').trim();
+                const email = formData.get('email').trim();
+                const subject = formData.get('subject').trim();
+                const message = formData.get('message').trim();
+                
+                // Validate form
+                if (!name || !email || !subject || !message) {
+                    errorMessage.textContent = 'Please fill in all required fields.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorMessage.textContent = 'Please enter a valid email address.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<div class="loading"></div> Sending...';
+                
+                // Simulate form submission (replace with actual submission logic)
+                setTimeout(() => {
+                    // Create mailto link
+                    const mailtoLink = `mailto:krushnapadole18@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                    
+                    // Open default email client
+                    window.location.href = mailtoLink;
+                    
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 2000);
+            });
+
+            // Real-time validation
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.style.borderColor = '#dc3545';
+                    } else {
+                        this.style.borderColor = '#e1e1e1';
+                    }
+                });
+                
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.style.borderColor = '#28a745';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
     <script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
